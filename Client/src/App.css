@@ -1,5 +1,4 @@
 #threadBox {
-  
   text-align: center;
   border: 1px solid #000000;
   width: 1240px;
@@ -11,4 +10,8 @@
 }
 #container {
   margin: 30px;
+}
+.table {
+  text-align: left;
+  padding: 20px;
 }
