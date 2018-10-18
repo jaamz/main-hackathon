@@ -5170,7 +5170,7 @@
       ]
     },
     "Microsoft.AspNetCore.Razor.Design/2.1.2": {
-      "sha512": "ab4+TZw3Sxqrr5TwrwVyABeQkhSxYMJXgG6yZw7T+r6Vz+hcOt+pK79o15ESG7kZvWAK9wRG7emnTIia5O6R1Q==",
+      "sha512": "sa/cztXesLyTgCiYuef0RK2EAImnak0w2wrjCh/YBTvbn4iV2eTy0q3F8CyUkGiaYEyxUKGVTko6+7SMRBL4Gg==",
       "type": "package",
       "path": "microsoft.aspnetcore.razor.design/2.1.2",
       "files": [
@@ -11501,23 +11501,23 @@
     ]
   },
   "packageFolders": {
-    "/Users/jamespark/.nuget/packages/": {},
-    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "/home/patrick/.nuget/packages/": {},
+    "/usr/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/jamespark/Documents/Git/redwood-hackathon/Server/Server.csproj",
+      "projectUniqueName": "/home/patrick/Documents/lucas.work/Week 11 10.15-19/hackathon/main-hackathon/Server/Server.csproj",
       "projectName": "Server",
-      "projectPath": "/Users/jamespark/Documents/Git/redwood-hackathon/Server/Server.csproj",
-      "packagesPath": "/Users/jamespark/.nuget/packages/",
-      "outputPath": "/Users/jamespark/Documents/Git/redwood-hackathon/Server/obj/",
+      "projectPath": "/home/patrick/Documents/lucas.work/Week 11 10.15-19/hackathon/main-hackathon/Server/Server.csproj",
+      "packagesPath": "/home/patrick/.nuget/packages/",
+      "outputPath": "/home/patrick/Documents/lucas.work/Week 11 10.15-19/hackathon/main-hackathon/Server/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        "/usr/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/Users/jamespark/.nuget/NuGet/NuGet.Config"
+        "/home/patrick/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"

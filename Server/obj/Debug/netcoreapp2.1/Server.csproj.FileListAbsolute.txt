@@ -1,0 +1,6 @@
+/home/patrick/Documents/lucas.work/Week 11 10.15-19/hackathon/main-hackathon/Server/obj/Debug/netcoreapp2.1/Server.csprojAssemblyReference.cache
+/home/patrick/Documents/lucas.work/Week 11 10.15-19/hackathon/main-hackathon/Server/obj/Debug/netcoreapp2.1/Server.csproj.CoreCompileInputs.cache
+/home/patrick/Documents/lucas.work/Week 11 10.15-19/hackathon/main-hackathon/Server/obj/Debug/netcoreapp2.1/Server.RazorAssemblyInfo.cache
+/home/patrick/Documents/lucas.work/Week 11 10.15-19/hackathon/main-hackathon/Server/obj/Debug/netcoreapp2.1/Server.RazorAssemblyInfo.cs
+/home/patrick/Documents/lucas.work/Week 11 10.15-19/hackathon/main-hackathon/Server/obj/Debug/netcoreapp2.1/Server.AssemblyInfoInputs.cache
+/home/patrick/Documents/lucas.work/Week 11 10.15-19/hackathon/main-hackathon/Server/obj/Debug/netcoreapp2.1/Server.AssemblyInfo.cs
