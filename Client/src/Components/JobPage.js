@@ -2,29 +2,24 @@ import React, { Component } from 'react';
 import FormSubmit from './FormSubmit';
 
 class JobPage extends Component {
-    state = {
-        threads:[],
 
-    }
-
-    addToThread = submittedThread => {
-        let newThread = [...this.state.threads, submittedThread];
-        this.setState({
-            threads: newThread
-        })
-    }
 
     render() {
 
 
 
         return ( 
-            <div>
-                <div>
+            <div className="row" id="container">
+                <div id="threadBox">
                     <h1>Thread</h1>
+                    {/* map out all the threads according to the submissions. 
+                    each thread should be clickable */}
+                    {/* <div className= 'threadBox'></div> */}
                 </div>
-                <div>
-                    <FormSubmit />
+                <div className="col-md-4" id="formBox">
+
+                    <FormSubmit 
+                    addToThread = {this.props.addToThread}/>
                 </div>
             </div>
 
