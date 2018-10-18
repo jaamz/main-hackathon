@@ -7,6 +7,10 @@ class JobPage extends Component {
 
     }
 
+    componentDidMount() {
+        this.props.grabThreads();
+    }
+
     addToThread = submittedThread => {
         let newThread = [...this.state.threads, submittedThread];
         this.setState({
