@@ -1,29 +1,15 @@
 import React, { Component } from 'react';
 import FormSubmit from './FormSubmit';
 
-class JobPage extends Component {
-
-    
-
-    // componentDidMount() {
-    //     this.props.grabThreads();
-    // }
-
-    addToThread = submittedThread => {
-        let newThread = [...this.state.threads, submittedThread];
-        this.setState({
-            threads: newThread
-        })
+class Collaboration extends Component {
+    state = {  
+        
     }
-
-    render() {
-
-
-
-        return ( 
+    render() { 
+        return (  
             <div className="row" id="container">
                 <div id="threadBox">
-                    <h1>Jobs</h1>
+                    <h1>Project Collaboration</h1>
                     <table className= "table">
                         <thead>
 
@@ -46,11 +32,8 @@ class JobPage extends Component {
                     </div>
                 </div>
             </div>
-
         );
     }
 }
-
-
-
-export default JobPage;
+ 
+export default Collaboration;

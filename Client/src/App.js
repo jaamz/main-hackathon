@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import JobPage from './Components/JobPage';
+import Collaboration from './Components/Collaboration';
 import FormSubmit from './Components/FormSubmit';
 import './App.css';
 import axios from 'axios';
@@ -33,10 +34,10 @@ class App extends Component {
     return (
       <div className="App">
         
-          
-          <JobPage
+          <Collaboration />
+          {/* <JobPage
           addToThread ={this.addToThread}
-          thread= {this.state.thread} />
+          thread= {this.state.thread} /> */}
           
         
       </div>
