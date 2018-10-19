@@ -2,6 +2,13 @@ import React, { Component } from 'react';
 import FormSubmit from '../FormSubmit';
 
 class InterviewPage extends Component {
+state={
+    thread:[]
+}
+
+// async componentDidMount() {
+//     axios.get("http://localhost:5000/")
+// }
 
 
     render() {
