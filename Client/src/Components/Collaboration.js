@@ -8,7 +8,7 @@ class Collaboration extends Component {
     render() { 
         return (  
             <div className="row" id="container">
-                <div id="threadBox">
+                <div className="col-md-8" id="threadBox">
                     <h1>Project Collaboration</h1>
                     <table className= "table">
                         <thead>
