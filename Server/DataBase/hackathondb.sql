@@ -7,11 +7,11 @@ CREATE TABLE Company (
     company_name    varchar(50),
     company_phone   varchar(50),
     company_address varchar(50),
-    company_notes   varchar(1000)
+    company_notes   varchar(100)
 );
 
 CREATE TABLE AppUser (
-    user_id         SERIAL PRIMARY KEY,
+    appuser_id         SERIAL PRIMARY KEY,
     name            varchar(50),
     email           varchar(50),
     phone           varchar(50),
@@ -21,7 +21,7 @@ CREATE TABLE AppUser (
 );
 
 CREATE TABLE Jobs (
-    jobs_id          SERIAL PRIMARY KEY,
+    jobs_id         SERIAL PRIMARY KEY,
     position_title  varchar(50),
     employment_type varchar(50),
     company_id      int REFERENCES Company (company_id)

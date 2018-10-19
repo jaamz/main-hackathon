@@ -10,7 +10,7 @@ namespace Server
         }
 
         public DbSet<AppUser>      appuser {get; set;}
-        public DbSet<Jobs>         employee {get; set;}
+        public DbSet<Jobs>         jobs {get; set;}
         public DbSet<Company>      company {get; set;}
 
     }

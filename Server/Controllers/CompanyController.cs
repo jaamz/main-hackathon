@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Server
 {
     [Route("api/companies")]
     [ApiController]
-    public class CustomerController : Controller
+    public class CompanyController : Controller
     {
 
         private HackathonDBContext _context;
 
-        public CustomerController(HackathonDBContext context)
+        public CompanyController(HackathonDBContext context)
         {
             _context = context;
         }

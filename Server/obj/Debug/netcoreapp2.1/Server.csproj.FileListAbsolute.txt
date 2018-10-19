@@ -4,3 +4,11 @@
 /home/patrick/Documents/lucas.work/Week 11 10.15-19/hackathon/main-hackathon/Server/obj/Debug/netcoreapp2.1/Server.RazorAssemblyInfo.cs
 /home/patrick/Documents/lucas.work/Week 11 10.15-19/hackathon/main-hackathon/Server/obj/Debug/netcoreapp2.1/Server.AssemblyInfoInputs.cache
 /home/patrick/Documents/lucas.work/Week 11 10.15-19/hackathon/main-hackathon/Server/obj/Debug/netcoreapp2.1/Server.AssemblyInfo.cs
+/home/patrick/Documents/lucas.work/Week 11 10.15-19/hackathon/main-hackathon/Server/bin/Debug/netcoreapp2.1/Server.deps.json
+/home/patrick/Documents/lucas.work/Week 11 10.15-19/hackathon/main-hackathon/Server/bin/Debug/netcoreapp2.1/Server.runtimeconfig.json
+/home/patrick/Documents/lucas.work/Week 11 10.15-19/hackathon/main-hackathon/Server/bin/Debug/netcoreapp2.1/Server.runtimeconfig.dev.json
+/home/patrick/Documents/lucas.work/Week 11 10.15-19/hackathon/main-hackathon/Server/bin/Debug/netcoreapp2.1/Server.dll
+/home/patrick/Documents/lucas.work/Week 11 10.15-19/hackathon/main-hackathon/Server/bin/Debug/netcoreapp2.1/Server.pdb
+/home/patrick/Documents/lucas.work/Week 11 10.15-19/hackathon/main-hackathon/Server/obj/Debug/netcoreapp2.1/Server.RazorTargetAssemblyInfo.cache
+/home/patrick/Documents/lucas.work/Week 11 10.15-19/hackathon/main-hackathon/Server/obj/Debug/netcoreapp2.1/Server.dll
+/home/patrick/Documents/lucas.work/Week 11 10.15-19/hackathon/main-hackathon/Server/obj/Debug/netcoreapp2.1/Server.pdb
