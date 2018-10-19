@@ -47,7 +47,7 @@ namespace Server
 
         }
 
-             [HttpPost]
+        [HttpPost]
         public async Task<IActionResult> Post([FromBody] Jobs job)
         {
             if (job == null)
@@ -62,13 +62,13 @@ namespace Server
             Jobs newjob = await _context.jobs
                                 .Include(c => c.company)
                                 .SingleOrDefaultAsync(c => c.jobs_id == job.jobs_id);
-            
+
             if (newjob == null)
             {
                 return BadRequest();
             }
 
-            return CreatedAtRoute("Getjob", new {id = job.jobs_id }, newjob);
+            return CreatedAtRoute("Getjob", new { id = job.jobs_id }, newjob);
         }
 
         [HttpPut("{id}")]

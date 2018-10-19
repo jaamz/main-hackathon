@@ -45,10 +45,12 @@ class JobPage extends Component {
                         <tbody>
                             {this.state.jobs.map(j => {
                                 return(
-                                    <div>
-                                        <h2>{j.position_title}</h2>
-                                        <h3>{j.company.company_name}</h3>
-                                        <h3>{j.employment_type}</h3>
+                                    <div
+                                    className="card job-card">
+                                        <h2
+                                        className="card-title">{j.position_title}</h2>
+                                        <h3>Company: {j.company.company_name}</h3>
+                                        <h3>Position Type: {j.employment_type}</h3>
                                     </div>
                                 )
                             })}
