@@ -44,12 +44,14 @@
 }
 .thread-container {
   text-align: left;
+  /* width: 300px; */
 }
+
 .thread-posting {
   padding: 25px;
 }
 .card {
-  width: 30rem;
+  width: 72rem;
   height: 15rem;
 }
 .jobCard {

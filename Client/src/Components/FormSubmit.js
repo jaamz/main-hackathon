@@ -20,7 +20,7 @@ class FormSubmit extends Component {
 
     onClick = e => {
         e.preventDefault();
-        this.props.addToThread(this.state);
+        this.props.sendJobs();
         this.setState({
             title:'',
             body:''

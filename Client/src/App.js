@@ -7,10 +7,12 @@ import InterviewPage from './Components/Interview/InterviewPage';
 import Mainpage from './Components/Mainpage';
 import './App.css';
 import axios from 'axios';
+import { Route, Switch } from 'react-router-dom';
 
 class App extends Component {
   state = {
-    threads: []
+    threads: [],
+    Jobs: []
   }
 
   addToThread = submittedThread => {
@@ -52,10 +54,10 @@ class App extends Component {
     return (
       <div className="App">
           <Switch>
-            <Route exact path = '/' render ={(renderProps) => <MainPage {...renderProps} />} />
-            <Route path = "/Jobs" render={(renderProps) => <JobPage {...renderProps} />} />
-            <Route path = "/Interview" render ={(renderProps) => <InterviewPage {...renderProps} />} />
-            <Route path = "/Collaboration" render={(renderProps) => <Collaboration {...renderProps} />} />
+            <Route exact path = '/' render ={() => <Mainpage  />} />
+            <Route path = "/Jobs" render={() => <JobPage  />} />
+            <Route path = "/Interview" render ={() => <InterviewPage  />} />
+            <Route path = "/Collaboration" render={() => <Collaboration  />} />
           </Switch>
           
         

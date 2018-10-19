@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import FormSubmit from '../FormSubmit';
 import axios from 'axios';
+import Header from '../Header';
 
 class JobPage extends Component {
     state = {
         jobs: [],
+        title:'',
+        body:''
     }
 
     
-    grabJobs = res => {
+    grabJobs = jobs => {
         axios.get(`http://localhost:5000/api/jobs`)
         .then(res => {
             console.log(res.data)
@@ -23,6 +26,14 @@ class JobPage extends Component {
         this.grabJobs();
     }
 
+    
+    sendJobs = jobs => {
+        axios.post(`http://localhost:5000/api/jobs`, this.state.title && this.state.body)
+
+    }
+
+
+
     // addToThread = submittedThread => {
     //     let newThread = [...this.state.threads, submittedThread];
     //     this.setState({
@@ -35,8 +46,10 @@ class JobPage extends Component {
 
 
         return ( 
+            <div>
+                <Header />
             <div className="row" id="container">
-                <div id="threadBox">
+                <div style={{width: 1200}}id="threadBox">
                     <h1>Jobs</h1>
                     <table className= "table">
                         <thead>
@@ -49,7 +62,7 @@ class JobPage extends Component {
                                     className="card job-card">
                                         <h2
                                         className="card-title">{j.position_title}</h2>
-                                        <h3>Company: {j.company.company_name}</h3>
+                                        <h3>Company: {j.company_name}</h3>
                                         <h3>Position Type: {j.employment_type}</h3>
                                     </div>
                                 )
@@ -63,9 +76,10 @@ class JobPage extends Component {
                 </div>
                 <div className="col-md-4" id="formBox">
                     <FormSubmit 
-                    addToThread = {this.props.addToThread}/>
+                    sendJobs = {this.props.sendJobs}/>
                     
                 </div>
+            </div>
             </div>
 
         );

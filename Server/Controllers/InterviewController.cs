@@ -7,23 +7,23 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Server
 {
-    [Route("api/messages")]
+    [Route("api/interview")]
     [ApiController]
-    public class postedmessageController : Controller
+    public class InterviewController : Controller
     {
 
         private HackathonDBContext _context;
 
-        public postedmessageController(HackathonDBContext context)
+        public InterviewController(HackathonDBContext context)
         {
             _context = context;
         }
 
 
         [HttpGet]
-        public List<PostedMessage> Get()
+        public List<Interview> Get()
         {
-            return _context.postedmessage.Include(m => m.thread_id).ToList();
+            return _context.interview.Include(m => m.appuser).ToList();
         }
 
         [HttpGet("{id}", Name = "Getpostedmessage")]
@@ -34,52 +34,52 @@ namespace Server
                 return NotFound();
             }
 
-            PostedMessage postedmessage = await _context.postedmessage
-                                        .Include(m => m.message_id)
-                                        .SingleOrDefaultAsync(m => m.message_id == id);
+            Interview interview = await _context.interview
+                                        .Include(m => m.interview_id)
+                                        .SingleOrDefaultAsync(m => m.interview_id == id);
 
-            if (postedmessage == null)
+            if (interview == null)
             {
                 return NotFound();
             }
 
-            return Ok(postedmessage);
+            return Ok(interview);
 
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] PostedMessage postedmessage)
+        public async Task<IActionResult> Post([FromBody] Interview interview)
         {
-            if (postedmessage == null)
+            if (interview == null)
             {
                 return BadRequest();
             }
 
-            _context.postedmessage.Add(postedmessage);
+            _context.interview.Add(interview);
             _context.SaveChanges();
 
             // Grab the newly created job such that can return below in "CreatedAtRoute"
-            PostedMessage newpostedmessage = await _context.postedmessage
-                                .Include(m => m.thread)
-                                .SingleOrDefaultAsync(t => t.message_id == postedmessage.message_id);
+            Interview newpostedmessage = await _context.interview
+                                .Include(m => m.interview_id)
+                                .SingleOrDefaultAsync(t => t.interview_id == interview.interview_id);
 
             if (newpostedmessage == null)
             {
                 return BadRequest();
             }
 
-            return CreatedAtRoute("Getpostedmessage", new { id = postedmessage.message_id }, newpostedmessage);
+            return CreatedAtRoute("Getpostedmessage", new { id = interview.interview_id }, newpostedmessage);
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] PostedMessage postedmessage)
+        public IActionResult Put(int id, [FromBody] Interview interview)
         {
-            if (postedmessage == null || postedmessage.message_id != id)
+            if (interview == null || interview.interview_id != id)
             {
                 return BadRequest();
             }
 
-            _context.postedmessage.Update(postedmessage);
+            _context.interview.Update(interview);
             _context.SaveChanges();
             return NoContent();
         }
@@ -87,14 +87,14 @@ namespace Server
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            PostedMessage item = _context.postedmessage.Find(id);
+            Interview item = _context.interview.Find(id);
 
             if (item == null)
             {
                 return NotFound();
             }
 
-            _context.postedmessage.Remove(item);
+            _context.interview.Remove(item);
             _context.SaveChanges();
             return Ok(item);
         }
