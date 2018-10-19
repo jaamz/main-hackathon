@@ -29,7 +29,7 @@ CREATE TABLE Jobs (
 
 CREATE TABLE Channel (
     channel_id      SERIAL PRIMARY KEY,
-    name            varchar(50),
+    name            varchar(50)
 );
 
 CREATE TABLE Thread (
@@ -45,7 +45,7 @@ CREATE TABLE PostedMessage(
     thread_id       int REFERENCES Thread (thread_id),
     message_title   varchar(50),
     message_content varchar(500),
-    datetime        TIMESTAMP
+    message_time    varchar(50)
 );
 
 INSERT INTO AppUser(name, email, phone, bio, user_type)
@@ -66,6 +66,25 @@ VALUES
 ('.Net Developer', 'Contract', 2),
 ('Full-Stack Developer', 'Full Time', 1),
 ('React-Native Developer', 'Full Time', 1);
+
+INSERT INTO Thread (thread_title, channel_id, appuser_id)
+VALUES
+('Help Needed', 1, 2),
+('New Listing', 2, 3),
+('Interviews', 3, 1);
+
+INSERT INTO Channel (name)
+VALUES
+('Collab'),
+('Jobs'),
+('Interviews');
+
+
+INSERT INTO PostedMessage (appuser_id, thread_id, message_title, message_content, message_time)
+VALUES
+(1, 2, 'Untitled', 'Help Please', '10/18/18'),
+(2, 3, 'Full Time', 'Pending', '10/12/18'),
+(3, 1, 'Ready', 'Full Time', '10/19/19');
 -- CREATE TABLE Interview(
 
 -- );

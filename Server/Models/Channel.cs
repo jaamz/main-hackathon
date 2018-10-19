@@ -4,11 +4,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Server
 {
-    public class JobBoard
+    public class Channel
     {
         [Key]
-        public int              jobboard_id {get; set;}
-        public JobBoard()
+        public int              channel_id {get; set;}
+        public string           name {get; set;}
+        public Channel()
         {
 
         }
