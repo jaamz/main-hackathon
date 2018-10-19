@@ -6,9 +6,9 @@ state={
     thread:[]
 }
 
-async componentDidMount() {
-    axios.get("http://localhost:5000/")
-}
+// async componentDidMount() {
+//     axios.get("http://localhost:5000/")
+// }
 
 
     render() {
