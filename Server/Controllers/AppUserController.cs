@@ -1,104 +1,73 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace Server
 {
-    [Route("api/users")]
+    [Route("api/appusers")]
     [ApiController]
-    public class AppUserController : Controller
+    public class AppUserController2 : Controller
     {
 
         private HackathonDBContext _context;
 
-        public AppUserController(HackathonDBContext context)
+        public AppUserController2(HackathonDBContext context)
         {
             _context = context;
         }
 
-
-        [HttpGet]
-        public List<AppUser> Get()
+        [HttpPost]
+        public ActionResult<AppUser> Register([FromBody] AppUser user)
         {
-            return _context.appuser.Include(c => c.company).ToList();
-        }
 
-        [HttpGet("{id}", Name = "GetUser")]
-        public async Task<IActionResult> Get(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            AppUser user = await _context.appuser
-                                        .Include(c => c.company)
-                                        .SingleOrDefaultAsync(c => c.appuser_id == id);
-
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(user);
-
-        }
-
-             [HttpPost]
-        public async Task<IActionResult> Post([FromBody] AppUser user)
-        {
-            if (user == null)
-            {
-                return BadRequest();
-            }
+            user.password = BCrypt.Net.BCrypt.HashPassword(user.password);
 
             _context.appuser.Add(user);
             _context.SaveChanges();
 
-            // Grab the newly created job such that can return below in "CreatedAtRoute"
-            AppUser newUser = await _context.appuser
-                                .Include(c => c.company)
-                                .SingleOrDefaultAsync(c => c.appuser_id == user.appuser_id);
-            
-            if (newUser == null)
-            {
-                return BadRequest();
-            }
-
-            return CreatedAtRoute("Getjob", new {id = user.appuser_id }, newUser);
+            return Ok(user);
         }
 
-        [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] AppUser user)
+        [HttpPost("login")]
+        public ActionResult Login([FromBody] AppUser user)
         {
-            if (user == null || user.appuser_id != id)
+            foreach (AppUser u in _context.appuser)
             {
-                return BadRequest();
+                if (u.username == user.username)
+                {
+                    bool verified = BCrypt.Net.BCrypt.Verify(user.password, u.password);
+                    if (verified)
+                    {
+                        string token = BuildToken(u);
+                        return Ok(token);
+                    }
+                    else
+                    {
+                        return NotFound();
+                    }
+                }
             }
 
-            _context.appuser.Update(user);
-            _context.SaveChanges();
-            return NoContent();
+            return NotFound();
         }
 
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public string BuildToken(AppUser user)
         {
-            AppUser item = _context.appuser.Find(id);
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretsuperSecretsuperSecret"));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-            if (item == null)
-            {
-                return NotFound();
-            }
+            var token = new JwtSecurityToken(
+                "localhost", 
+                "localhost", 
+                expires: DateTime.Now.AddSeconds(15),
+                signingCredentials: creds);
 
-            _context.appuser.Remove(item);
-            _context.SaveChanges();
-            return Ok(item);
+            return new JwtSecurityTokenHandler().WriteToken(token);
         }
-
-
     }
 }

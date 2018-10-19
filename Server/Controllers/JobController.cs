@@ -20,43 +20,42 @@ namespace Server
         }
 
 
-        [HttpGet]
-        public List<Jobs> Get()
+        public IActionResult Get()
         {
-            return _context.jobs.Include(c => c.company).ToList();
+            if (_context.jobs.ToList().Count == 0)
+            {
+                return NotFound();
+            }
+
+            return Ok(_context.jobs.ToList());
         }
 
-        [HttpGet("{id}", Name = "GetJob")]
-        public async Task<IActionResult> Get(int? id)
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
+            Jobs j = _context.jobs.Find(id);
+
+            if ( j == null ) {
+                return BadRequest();
             }
-
-            Jobs job = await _context.jobs
-                                        .Include(c => c.company)
-                                        .SingleOrDefaultAsync(c => c.jobs_id == id);
-
-            if (job == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(job);
+            return Ok(j);
 
         }
 
         [HttpPost]
+<<<<<<< HEAD
         public async Task<IActionResult> Post([FromBody] Jobs job)
+=======
+        public IActionResult Create([FromBody]Jobs job)
+>>>>>>> Lucas-Working-Branch
         {
-            if (job == null)
+            if (job == null) 
             {
                 return BadRequest();
             }
-
             _context.jobs.Add(job);
             _context.SaveChanges();
+<<<<<<< HEAD
 
             // Grab the newly created job such that can return below in "CreatedAtRoute"
             Jobs newjob = await _context.jobs
@@ -69,26 +68,34 @@ namespace Server
             }
 
             return CreatedAtRoute("Getjob", new { id = job.jobs_id }, newjob);
+=======
+            return Ok(job);
+>>>>>>> Lucas-Working-Branch
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] Jobs jobs)
+        public IActionResult UpdateById(int id, [FromBody]Jobs job)
         {
-            if (jobs == null || jobs.jobs_id != id)
+            Jobs item = _context.jobs.Find(id);
+            
+            if (job == null)
             {
-                return BadRequest();
+                return NotFound();
             }
 
-            _context.jobs.Update(jobs);
+            _context.jobs.Remove(item);
+            _context.jobs.Add(job);
             _context.SaveChanges();
-            return NoContent();
+
+            return Ok(job);
         }
+
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
             Jobs item = _context.jobs.Find(id);
-
+            
             if (item == null)
             {
                 return NotFound();

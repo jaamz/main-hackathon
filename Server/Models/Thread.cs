@@ -9,9 +9,6 @@ namespace Server
         [Key]
         public int              thread_id {get; set;}
         public string           thread_title {get; set;}
-        [ForeignKey("channel_id")]
-        public int              channel_id     {get; set;}
-        public Channel          channel {get; set;}
         [ForeignKey("appuser_id")]
         public int              appuser_id{get; set;}
         public AppUser          appuser {get; set;}
