@@ -1,0 +1,27 @@
+# Client side
+
+# dependencies
+Client/node_modules
+
+# testing
+Client/coverage
+
+# production
+Client/build
+
+# misc
+Client/.DS_Store
+CLient/.env.local
+Client/.env.development.local
+Client/.env.test.local
+Client/.env.production.local
+Client/npm-debug.log*
+Client/yarn-debug.log*
+Client/yarn-error.log*
+
+# Server side
+Server/.vscode/
+Server/bin/
+Server/obj
+
+

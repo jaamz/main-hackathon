@@ -11,8 +11,6 @@ namespace Server
 
         public DbSet<AppUser>       appuser { get; set; }
         public DbSet<Jobs>          jobs { get; set; }
-        public DbSet<Company>       company { get; set; }
-        public DbSet<Channel>       channel { get; set; }
 
         public DbSet<Thread>        thread { get; set; }
 
