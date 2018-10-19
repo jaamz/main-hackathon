@@ -35,25 +35,28 @@ class FormSubmit extends Component {
     render() {
 
         return (
-            <div>
+            <div className="formContainer">
                 <form
                 onSubmit={this.onClick}>
-                    <div>
+                    <div >
                         <input
+                        className="form-control"
                         value={this.state.title}
                         onChange={this.onTitleChange}
                         />
                         </div>
                         <div>
                             <textarea 
+                            className="form-control"
+                            rows="5"
                             value={this.state.body}
                             onChange={this.onBodyChange}
                             />
                         </div>
                         <div>
                             <button 
-                            className='btn btn-primary'
-                            />
+                            className="btn btn-primary"
+                            >Submit</button>
                     </div>
                 </form>
 

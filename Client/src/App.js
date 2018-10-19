@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import JobPage from './Components/JobPage';
 import Collaboration from './Components/Collaboration';
 import FormSubmit from './Components/FormSubmit';
+import InterviewPage from './Components/InterviewPage';
 import './App.css';
 import axios from 'axios';
 
