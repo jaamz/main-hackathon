@@ -18,18 +18,22 @@ class MainPage extends Component {
                 
                 <div className="row">  
                 <div className="imageFront" style={{backgroundColor: '#4d4d4d', textAlign: "center", color: 'white'}}>
-                <h2>Redwood Alumni</h2>
+                <h2 style={{padding: 30 }}>Red+</h2>
+                <div>_________________________________</div>
+                The exclusive central hub for Redwood students and Alumni.
+                Students: Join message boards to collaborate, find the perfect jobs, and prep for the job interview.
+                <div>_________________________________</div>
                 </div>
                 <Link to="/Jobs"><div className="box1">Jobs</div></Link>
                 {/* <img className= "imageFront" src="https://preview.ibb.co/dru6O0/cell-phone-close-up-contemporary-905873.jpg"/> */}
-                <div className="centered">Centered</div>
+                
                 </div>
                 
                 <div className="row">
-                    <Link to="/Collaborations"><div className="box2"></div></Link>
+                    <Link to="/Collaboration"><div className="box2"></div></Link>
                     {/* <img className="imageFront" src= "https://preview.ibb.co/fvht30/adult-agreement-beard-541522.jpg" />
                     <div className="centered">Centered</div> */}
-                    <Link to="/Interviews"><div className="box3"></div></Link>
+                    <Link to="/Interview"><div className="box3"></div></Link>
                     {/* <img className= "imageFront" src= "https://images.pexels.com/photos/7075/people-office-group-team.jpg?" />
                     <div className="centered">Centered</div> */}
 

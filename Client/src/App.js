@@ -11,7 +11,8 @@ import { Route, Switch } from 'react-router-dom';
 
 class App extends Component {
   state = {
-    threads: []
+    threads: [],
+    Jobs: []
   }
 
   addToThread = submittedThread => {
