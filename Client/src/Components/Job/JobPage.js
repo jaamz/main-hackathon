@@ -8,7 +8,7 @@ class JobPage extends Component {
     }
 
     
-    grabJobs = res => {
+    grabJobs = jobs => {
         axios.get(`http://localhost:5000/api/jobs`)
         .then(res => {
             console.log(res.data)
@@ -22,6 +22,8 @@ class JobPage extends Component {
     componentDidMount() {
         this.grabJobs();
     }
+
+    
 
     // addToThread = submittedThread => {
     //     let newThread = [...this.state.threads, submittedThread];
@@ -50,6 +52,8 @@ class JobPage extends Component {
                                         <h2
                                         className="card-title">{j.position_title}</h2>
                                         <h3>Company: {j.company.company_name}</h3>
+                                        <h3>Address: {j.company.company_address}</h3>
+                                        <h3>Phone #: {j.company.company_phone}</h3>
                                         <h3>Position Type: {j.employment_type}</h3>
                                     </div>
                                 )

@@ -1,15 +1,26 @@
 import React, { Component } from 'react';
 import FormSubmit from '../FormSubmit';
+import axios from 'axios';
+
 
 class InterviewPage extends Component {
 state={
     thread:[]
 }
 
-// async componentDidMount() {
-//     axios.get("http://localhost:5000/")
-// }
+componentDidMount(){
+    this.grabInterviews();
+}
 
+grabInterviews = res => {
+    axios.get(`http://localhost:5000/api/`)
+    .then(res => {
+        
+            this.setState({
+                thread: res.data
+            })
+        })
+}
 
     render() {
 
