@@ -15,30 +15,28 @@ class MainPage extends Component {
                 <button className="btn btn-link" data-toggle="modal" data-target="#signupModal">Sign Up</button>
                 <Modal/>
                 </div> 
+                
                 <div className="row">  
-                <div className="col-md-4">
-                    <img className= "imageFront" src="https://images.pexels.com/photos/905873/pexels-photo-905873.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"/>
-                    <div classname="imgbox" style={{backgroundColor: '#e01e4d', color: 'white'}}>
-                    Looking for Jobs?
-                    asdf
-                    assdf
-                    asdf
-                    </div>
+                <div className="imageFront" style={{backgroundColor: '#4d4d4d', textAlign: "center", color: 'white'}}>
+                <h2>Redwood Alumni</h2>
                 </div>
-                <div className="col-md-4">
-                    <img className= "imageFront" src= "https://images.pexels.com/photos/7075/people-office-group-team.jpg?auto=compress&cs=tinysrgb&h=650&w=940" />
-                    <div classname="imgbox" style={{backgroundColor: '#e01e4d', color: 'white'}}>
-                    Interviews
-                    </div>
+                <div className="box1">Jobs</div>
+                {/* <img className= "imageFront" src="https://preview.ibb.co/dru6O0/cell-phone-close-up-contemporary-905873.jpg"/> */}
+                <div className="centered">Centered</div>
                 </div>
-                <div className="col-md-4">
-                    <img className="imageFront" src= "https://images.pexels.com/photos/541522/pexels-photo-541522.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" />
-                    <div classname="imgbox" style={{backgroundColor: '#e01e4d', color: 'white'}}>
-                    Project Collaborations
-                    </div>
+                
+                <div className="row">
+                    <div className="box2"></div>
+                    {/* <img className="imageFront" src= "https://preview.ibb.co/fvht30/adult-agreement-beard-541522.jpg" />
+                    <div className="centered">Centered</div> */}
+                    <div className="box3"></div>
+                    {/* <img className= "imageFront" src= "https://images.pexels.com/photos/7075/people-office-group-team.jpg?" />
+                    <div className="centered">Centered</div> */}
+
                 </div>
                 </div>
-            </div>
+                
+            
         );
     }
 }

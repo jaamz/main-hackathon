@@ -3,8 +3,8 @@
 }
 
 .imageFront {
-  width: 350px;
-  height: 250px;
+  width: 490px;
+  height: 350px;
 
 }
 .imgbox {
@@ -47,4 +47,28 @@
 }
 .thread-posting {
   padding: 25px;
+}
+.centered {
+  color: "#FFFFFF";
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.box1 {
+  background-image: url("https://preview.ibb.co/dru6O0/cell-phone-close-up-contemporary-905873.jpg");
+  width: 490px;
+  height: 350px;
+}
+.box2 {
+  background-image: url("https://preview.ibb.co/fvht30/adult-agreement-beard-541522.jpg");
+  width: 490px;
+  height: 350px;
+}
+
+.box3 {
+  background-image: url("https://preview.ibb.co/hDQfi0/advice-advise-advisor-7075.jpg");
+  width: 490px;
+  height: 350px;
 }
