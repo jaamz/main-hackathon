@@ -36,9 +36,11 @@ class FormSubmit extends Component {
 
         return (
             <div className="formContainer">
+            <h1 style={{textAlign: "center", color: "#516991"}}> Create a thread </h1>
                 <form
                 onSubmit={this.onClick}>
                     <div >
+                        Title
                         <input
                         className="form-control"
                         value={this.state.title}
@@ -46,6 +48,7 @@ class FormSubmit extends Component {
                         />
                         </div>
                         <div>
+                            Message
                             <textarea 
                             className="form-control"
                             rows="5"

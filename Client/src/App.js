@@ -3,8 +3,8 @@ import JobPage from './Components/Job/JobPage';
 import Collaboration from './Components/Collaboration/Collaboration';
 import JobThreads from './Components/Job/JobThreads'
 import FormSubmit from './Components/FormSubmit';
-// import InterviewPage from './Components/InterviewPage';
-// import Mainpage from './Components/Mainpage'
+import InterviewPage from './Components/InterviewPage';
+import Mainpage from './Components/Mainpage';
 import './App.css';
 import axios from 'axios';
 
@@ -42,8 +42,10 @@ class App extends Component {
         {/* <JobPage
           addToThread ={this.addToThread}
           thread= {this.state.thread} /> */}
-
-
+          {/* <InterviewPage /> */}
+          <Mainpage />
+          
+        
       </div>
     );
   }
