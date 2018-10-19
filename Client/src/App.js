@@ -3,7 +3,7 @@ import JobPage from './Components/Job/JobPage';
 import Collaboration from './Components/Collaboration/Collaboration';
 import JobThreads from './Components/Job/JobThreads'
 import FormSubmit from './Components/FormSubmit';
-import InterviewPage from './Components/InterviewPage';
+import InterviewPage from './Components/Interview/InterviewPage';
 import Mainpage from './Components/Mainpage';
 import './App.css';
 import axios from 'axios';
@@ -36,7 +36,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <JobThreads />
+        {/* <JobThreads /> */}
         
         {/* <Collaboration /> */}
         {/* <JobPage
