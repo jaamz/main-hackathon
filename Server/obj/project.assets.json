@@ -11501,23 +11501,23 @@
     ]
   },
   "packageFolders": {
-    "/Users/jamespark/.nuget/packages/": {},
-    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "C:\\Users\\tdinh\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/jamespark/Documents/Git/redwood-hackathon/Server/Server.csproj",
+      "projectUniqueName": "C:\\Users\\tdinh\\Desktop\\main-hackathon\\server\\Server.csproj",
       "projectName": "Server",
-      "projectPath": "/Users/jamespark/Documents/Git/redwood-hackathon/Server/Server.csproj",
-      "packagesPath": "/Users/jamespark/.nuget/packages/",
-      "outputPath": "/Users/jamespark/Documents/Git/redwood-hackathon/Server/obj/",
+      "projectPath": "C:\\Users\\tdinh\\Desktop\\main-hackathon\\server\\Server.csproj",
+      "packagesPath": "C:\\Users\\tdinh\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\tdinh\\Desktop\\main-hackathon\\server\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/Users/jamespark/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\tdinh\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
