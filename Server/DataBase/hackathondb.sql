@@ -80,11 +80,11 @@ VALUES
 ('Interviews');
 
 
-INSERT INTO PostedMessage (appuser_id, thread_id, message_title, message_content, message_time)
+INSERT INTO PostedMessage (appuser_id, message_title, message_content, message_time)
 VALUES
-(1, 2, 'Untitled', 'Help Please', '10/18/18'),
-(2, 3, 'Full Time', 'Pending', '10/12/18'),
-(3, 1, 'Ready', 'Full Time', '10/19/19');
+(1, 'Untitled', 'Help Please', '10/18/18'),
+(2, 'Full Time', 'Pending', '10/12/18'),
+(3, 'Ready', 'Full Time', '10/19/19');
 -- CREATE TABLE Interview(
 
 -- );

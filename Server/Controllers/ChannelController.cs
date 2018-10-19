@@ -29,62 +29,61 @@ namespace Server
 
             return Ok(_context.channel.ToList());
         }
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
+        {
+            Channel chan = _context.channel.Find(id);
 
-        // [HttpGet("{id}")]
-        // public IActionResult GetById(int id)
-        // {
-        //     Company c = _context.company.Find(id);
+            if ( chan == null ) {
+                return BadRequest();
+            }
+            return Ok(chan);
 
-        //     if ( c == null ) {
-        //         return BadRequest();
-        //     }
-        //     return Ok(c);
+        }
 
-        // }
+        [HttpPost]
+        public IActionResult Create([FromBody]Channel channel)
+        {
+            if (channel == null) 
+            {
+                return BadRequest();
+            }
+            _context.channel.Add(channel);
+            _context.SaveChanges();
+            return Ok(channel);
+        }
 
-        // [HttpPost]
-        // public IActionResult Create([FromBody]Company company)
-        // {
-        //     if (company == null) 
-        //     {
-        //         return BadRequest();
-        //     }
-        //     _context.company.Add(company);
-        //     _context.SaveChanges();
-        //     return Ok(company);
-        // }
-
-        // [HttpPut("{id}")]
-        // public IActionResult UpdateById(int id, [FromBody]Company company)
-        // {
-        //     Company item = _context.company.Find(id);
+        [HttpPut("{id}")]
+        public IActionResult UpdateById(int id, [FromBody]Channel channel)
+        {
+            Channel item = _context.channel.Find(id);
             
-        //     if (company == null)
-        //     {
-        //         return NotFound();
-        //     }
+            if (channel == null)
+            {
+                return NotFound();
+            }
 
-        //     _context.company.Remove(item);
-        //     _context.company.Add(company);
-        //     _context.SaveChanges();
+            _context.channel.Remove(item);
+            _context.channel.Add(channel);
+            _context.SaveChanges();
 
-        //     return Ok(company);
-        // }
+            return Ok(channel);
+        }
 
-        // [HttpDelete("{id}")]
-        // public IActionResult Delete(int id)
-        // {
-        //     Company item = _context.company.Find(id);
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            Channel item = _context.channel.Find(id);
             
-        //     if (item == null)
-        //     {
-        //         return NotFound();
-        //     }
+            if (item == null)
+            {
+                return NotFound();
+            }
 
-        //     _context.company.Remove(item);
-        //     _context.SaveChanges();
-        //     return Ok(item);
-        // }
+            _context.channel.Remove(item);
+            _context.SaveChanges();
+            return Ok(item);
+        }
 
 
      }
