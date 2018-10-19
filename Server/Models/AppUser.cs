@@ -15,7 +15,6 @@ namespace Server
         // public string               password {get; set;}
         public string               phone {get; set;}
 
-        public string               company_name {get; set;}
         public string               bio  {get; set;}
         public string               user_type {get; set;}
 

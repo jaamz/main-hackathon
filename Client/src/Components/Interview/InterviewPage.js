@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import FormSubmit from '../FormSubmit';
 import axios from 'axios';
+import Header from '../Header';
 
 
 class InterviewPage extends Component {
 state={
-    thread:[]
+    interview:[]
 }
 
 componentDidMount(){
@@ -13,11 +14,10 @@ componentDidMount(){
 }
 
 grabInterviews = res => {
-    axios.get(`http://localhost:5000/api/`)
+    axios.get(`http://localhost:5000/api/interview`)
     .then(res => {
-        
             this.setState({
-                thread: res.data
+                interview: res.data
             })
         })
 }
@@ -25,6 +25,8 @@ grabInterviews = res => {
     render() {
 
         return ( 
+            <div>
+                <Header />
             <div className="row" id="container">
                 <div className="col-md-8" id="threadBox">
                     <h1>Interviews</h1>
@@ -33,14 +35,24 @@ grabInterviews = res => {
 
                         </thead>
                         <tbody>
-                            <tr>this is going to map out threads</tr>
-                            <tr>t row 2</tr>
+                            <tr>
+                            {this.state.interview.map(i => {
+                                return(
+                                    <div className="card job-card">
+                                        <h3>
+                                            {i.interview_title}
+                                        </h3>
+                                        <h3>User: {i.appuser.username}</h3>
+                                        <h4>
+                                            {i.interview_body}
+                                        </h4>
+                                    </div>
+                                )
+                            })}
+                            </tr>
                         </tbody>
                     
                     </table>
-                    {/* map out all the threads according to the submissions. 
-                    each thread should be clickable */}
-                    {/* <div className= 'threadBox'></div> */}
                 </div>
                 <div className="col-md-4" id="formBox">
                     <div>
@@ -48,6 +60,7 @@ grabInterviews = res => {
                     addToThread = {this.props.addToThread}/>
                     </div>
                 </div>
+            </div>
             </div>
 
         );

@@ -1,39 +1,66 @@
 import React, { Component } from 'react';
 import FormSubmit from '../FormSubmit';
+import axios from 'axios';
+import Header from '../Header';
 
 class Collaboration extends Component {
-    state = {  
-        
+    state = {
+        collaborations: []
     }
-    render() { 
-        return (  
+
+
+    grabCollab = collab => {
+        axios.get(`http://localhost:5000/api/collaboration`)
+            .then(res => {
+                this.setState({
+                    collaborations: res.data
+                })
+            })
+    }
+    componentDidMount() {
+        this.grabCollab();
+    }
+
+    render() {
+        return (
+            <div>
+                <Header /> 
+                
             <div className="row" id="container">
+            
                 <div className="col-md-8" id="threadBox">
                     <h1>Project Collaboration</h1>
-                    <table className= "table">
+                    <table className="table">
                         <thead>
 
                         </thead>
                         <tbody>
-                            <tr>this is going to map out threads</tr>
-                            <tr>t row 2</tr>
+                            {this.state.collaborations.map( c => {
+                                return(
+                                    <div className="card job-card">
+                                        <h2>
+                                            {c.collaboration_title}
+                                        </h2>
+                                        <h3>{c.appuser.username}</h3>
+                                        <h3>{c.collaboration_body}</h3>
+                                    </div>
+                                )
+                            })}
                         </tbody>
-                    
+
                     </table>
-                    {/* map out all the threads according to the submissions. 
-                    each thread should be clickable */}
-                    {/* <div className= 'threadBox'></div> */}
+
                 </div>
                 <div className="col-md-4" id="formBox">
                     <div>
-                    <h1>Create a thread</h1>
-                    <FormSubmit 
-                    addToThread = {this.props.addToThread}/>
+                        <FormSubmit
+                            addToThread={this.props.addToThread} />
                     </div>
                 </div>
+            </div>
             </div>
         );
     }
 }
- 
+
 export default Collaboration;

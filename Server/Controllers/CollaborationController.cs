@@ -7,23 +7,23 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Server
 {
-    [Route("api/threads")]
+    [Route("api/collaboration")]
     [ApiController]
-    public class ThreadController : Controller
+    public class CollaborationController : Controller
     {
 
         private HackathonDBContext _context;
 
-        public ThreadController(HackathonDBContext context)
+        public CollaborationController(HackathonDBContext context)
         {
             _context = context;
         }
 
 
         [HttpGet]
-        public List<Thread> Get()
+        public List<Collaboration> Get()
         {
-            return _context.thread
+            return _context.collaboration
                                 .Include(t => t.appuser)
                                 .ToList();
         }
@@ -36,52 +36,52 @@ namespace Server
                 return NotFound();
             }
 
-            Thread thread = await _context.thread
+            Collaboration collaboration = await _context.collaboration
                                         .Include(t => t.appuser_id)
-                                        .FirstOrDefaultAsync(t => t.thread_id == id);
+                                        .FirstOrDefaultAsync(t => t.collaboration_id == id);
 
-            if (thread == null)
+            if (collaboration == null)
             {
                 return NotFound();
             }
 
-            return Ok(thread);
+            return Ok(collaboration);
 
         }
 
              [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Thread thread)
+        public async Task<IActionResult> Post([FromBody] Collaboration collaboration)
         {
-            if (thread == null)
+            if (collaboration == null)
             {
                 return BadRequest();
             }
 
-            _context.thread.Add(thread);
+            _context.collaboration.Add(collaboration);
             _context.SaveChanges();
 
             // Grab the newly created job such that can return below in "CreatedAtRoute"
-            Thread newThread = await _context.thread
+            Collaboration newThread = await _context.collaboration
                                         .Include(t => t.appuser_id)
-                                        .FirstOrDefaultAsync(t => t.thread_id == thread.thread_id);
+                                        .FirstOrDefaultAsync(t => t.collaboration_id == collaboration.collaboration_id);
             
             if (newThread == null)
             {
                 return BadRequest();
             }
 
-            return CreatedAtRoute("GetThread", new {id = thread.thread_id }, newThread);
+            return CreatedAtRoute("GetThread", new {id = collaboration.collaboration_id }, newThread);
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] Thread thread)
+        public IActionResult Put(int id, [FromBody] Collaboration collaboration)
         {
-            if (thread == null || thread.thread_id != id)
+            if (collaboration == null || collaboration.collaboration_id != id)
             {
                 return BadRequest();
             }
 
-            _context.thread.Update(thread);
+            _context.collaboration.Update(collaboration);
             _context.SaveChanges();
             return NoContent();
         }
@@ -89,14 +89,14 @@ namespace Server
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            Thread item = _context.thread.Find(id);
+            Collaboration item = _context.collaboration.Find(id);
 
             if (item == null)
             {
                 return NotFound();
             }
 
-            _context.thread.Remove(item);
+            _context.collaboration.Remove(item);
             _context.SaveChanges();
             return Ok(item);
         }
