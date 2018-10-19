@@ -27,11 +27,9 @@ class JobPage extends Component {
                     {/* <div className= 'threadBox'></div> */}
                 </div>
                 <div className="col-md-4" id="formBox">
-                    <div>
-                    <h1>Create a thread</h1>
                     <FormSubmit 
                     addToThread = {this.props.addToThread}/>
-                    </div>
+                    
                 </div>
             </div>
 
