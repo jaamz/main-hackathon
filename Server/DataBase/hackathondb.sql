@@ -11,7 +11,7 @@ CREATE TABLE Company (
 );
 
 CREATE TABLE AppUser (
-    appuser_id         SERIAL PRIMARY KEY,
+    appuser_id      SERIAL PRIMARY KEY,
     name            varchar(50),
     email           varchar(50),
     phone           varchar(50),
@@ -25,6 +25,27 @@ CREATE TABLE Jobs (
     position_title  varchar(50),
     employment_type varchar(50),
     company_id      int REFERENCES Company (company_id)
+);
+
+CREATE TABLE Channel (
+    channel_id      SERIAL PRIMARY KEY,
+    name            varchar(50),
+);
+
+CREATE TABLE Thread (
+    thread_id       SERIAL PRIMARY KEY,
+    thread_title    varchar(50),
+    channel_id      int REFERENCES Channel (channel_id),
+    appuser_id      int REFERENCES AppUser(appuser_id)
+);
+
+CREATE TABLE PostedMessage(
+    message_id      SERIAL PRIMARY KEY,
+    appuser_id      int REFERENCES AppUser (appuser_id),
+    thread_id       int REFERENCES Thread (thread_id),
+    message_title   varchar(50),
+    message_content varchar(500),
+    datetime        TIMESTAMP
 );
 
 INSERT INTO AppUser(name, email, phone, bio, user_type)
