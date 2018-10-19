@@ -1,25 +1,52 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import JobPage from './Components/Job/JobPage';
+import Collaboration from './Components/Collaboration/Collaboration';
+import JobThreads from './Components/Job/JobThreads'
+import FormSubmit from './Components/FormSubmit';
+import InterviewPage from './Components/Interview/InterviewPage';
+import Mainpage from './Components/Mainpage';
 import './App.css';
+import axios from 'axios';
 
 class App extends Component {
+  state = {
+    threads: []
+  }
+
+  addToThread = submittedThread => {
+    let newThread = [...this.state.threads, submittedThread];
+    this.setState({
+      threads: newThread
+    })
+    console.log(this.state.threads);
+  }
+
+  // CORS .NET 
+
+
+  grabThreads = threads => {
+    axios.get(`http://localhost:5000/`)
+      .then(res => {
+        this.setState({
+          threads: res.data.map(x => x.threads)
+        })
+      })
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        {/* <JobThreads /> */}
+        
+        {/* <Collaboration /> */}
+        {/* <JobPage
+          addToThread ={this.addToThread}
+          thread= {this.state.thread} /> */}
+          {/* <InterviewPage /> */}
+          {/* <Mainpage /> */}
+          <JobPage />
+          
+        
       </div>
     );
   }
