@@ -43,7 +43,8 @@ class App extends Component {
           addToThread ={this.addToThread}
           thread= {this.state.thread} /> */}
           {/* <InterviewPage /> */}
-          <Mainpage />
+          {/* <Mainpage /> */}
+          <JobPage />
           
         
       </div>

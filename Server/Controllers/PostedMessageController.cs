@@ -47,7 +47,7 @@ namespace Server
 
         }
 
-             [HttpPost]
+        [HttpPost]
         public async Task<IActionResult> Post([FromBody] PostedMessage postedmessage)
         {
             if (postedmessage == null)
@@ -62,13 +62,13 @@ namespace Server
             PostedMessage newpostedmessage = await _context.postedmessage
                                 .Include(m => m.thread)
                                 .SingleOrDefaultAsync(t => t.message_id == postedmessage.message_id);
-            
+
             if (newpostedmessage == null)
             {
                 return BadRequest();
             }
 
-            return CreatedAtRoute("Getpostedmessage", new {id = postedmessage.message_id }, newpostedmessage);
+            return CreatedAtRoute("Getpostedmessage", new { id = postedmessage.message_id }, newpostedmessage);
         }
 
         [HttpPut("{id}")]

@@ -1,20 +1,34 @@
 import React, { Component } from 'react';
 import FormSubmit from '../FormSubmit';
+import axios from 'axios';
 
 class JobPage extends Component {
+    state = {
+        jobs: [],
+    }
 
     
-
-    // componentDidMount() {
-    //     this.props.grabThreads();
-    // }
-
-    addToThread = submittedThread => {
-        let newThread = [...this.state.threads, submittedThread];
-        this.setState({
-            threads: newThread
-        })
+    grabJobs = res => {
+        axios.get(`http://localhost:5000/api/jobs`)
+        .then(res => {
+            console.log(res.data)
+                this.setState({
+                    jobs: res.data
+                })
+            })
     }
+
+
+    componentDidMount() {
+        this.grabJobs();
+    }
+
+    // addToThread = submittedThread => {
+    //     let newThread = [...this.state.threads, submittedThread];
+    //     this.setState({
+    //         threads: newThread
+    //     })
+    // }
 
     render() {
 
@@ -29,8 +43,15 @@ class JobPage extends Component {
 
                         </thead>
                         <tbody>
-                            <tr>this is going to map out threads</tr>
-                            <tr>t row 2</tr>
+                            {this.state.jobs.map(j => {
+                                return(
+                                    <div>
+                                        <h2>{j.position_title}</h2>
+                                        <h3>{j.company.company_name}</h3>
+                                        <h3>{j.employment_type}</h3>
+                                    </div>
+                                )
+                            })}
                         </tbody>
                     
                     </table>
