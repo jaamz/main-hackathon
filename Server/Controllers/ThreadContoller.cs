@@ -24,7 +24,6 @@ namespace Server
         public List<Thread> Get()
         {
             return _context.thread
-                                .Include(t => t.channel)
                                 .Include(t => t.appuser)
                                 .ToList();
         }
@@ -38,7 +37,6 @@ namespace Server
             }
 
             Thread thread = await _context.thread
-                                        .Include(t => t.channel_id)
                                         .Include(t => t.appuser_id)
                                         .FirstOrDefaultAsync(t => t.thread_id == id);
 
@@ -64,7 +62,6 @@ namespace Server
 
             // Grab the newly created job such that can return below in "CreatedAtRoute"
             Thread newThread = await _context.thread
-                                .Include(t => t.channel_id)
                                         .Include(t => t.appuser_id)
                                         .FirstOrDefaultAsync(t => t.thread_id == thread.thread_id);
             
