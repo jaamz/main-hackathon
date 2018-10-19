@@ -43,11 +43,7 @@ namespace Server
         }
 
         [HttpPost]
-<<<<<<< HEAD
-        public async Task<IActionResult> Post([FromBody] Jobs job)
-=======
         public IActionResult Create([FromBody]Jobs job)
->>>>>>> Lucas-Working-Branch
         {
             if (job == null) 
             {
@@ -55,22 +51,7 @@ namespace Server
             }
             _context.jobs.Add(job);
             _context.SaveChanges();
-<<<<<<< HEAD
-
-            // Grab the newly created job such that can return below in "CreatedAtRoute"
-            Jobs newjob = await _context.jobs
-                                .Include(c => c.company)
-                                .SingleOrDefaultAsync(c => c.jobs_id == job.jobs_id);
-
-            if (newjob == null)
-            {
-                return BadRequest();
-            }
-
-            return CreatedAtRoute("Getjob", new { id = job.jobs_id }, newjob);
-=======
             return Ok(job);
->>>>>>> Lucas-Working-Branch
         }
 
         [HttpPut("{id}")]
