@@ -33,18 +33,30 @@ class App extends Component {
       })
   }
 
+  // renderHelper = path => {
+  //   switch (path) {
+  //     case HOME: 
+  //     return <MainPage />
+  //     case JOB: 
+  //     return 
+  //     case INTERVIEW:
+  //     return
+  //     case COLLABORATION:
+  //     return
+  //     default:
+  //     return <h1>Not found</h1>
+  //   }
+  // }
+
   render() {
     return (
       <div className="App">
-        {/* <JobThreads /> */}
-        
-        {/* <Collaboration /> */}
-        {/* <JobPage
-          addToThread ={this.addToThread}
-          thread= {this.state.thread} /> */}
-          {/* <InterviewPage /> */}
-          {/* <Mainpage /> */}
-          <JobPage />
+          <Switch>
+            <Route exact path = '/' render ={(renderProps) => <MainPage {...renderProps} />} />
+            <Route path = "/Jobs" render={(renderProps) => <JobPage {...renderProps} />} />
+            <Route path = "/Interview" render ={(renderProps) => <InterviewPage {...renderProps} />} />
+            <Route path = "/Collaboration" render={(renderProps) => <Collaboration {...renderProps} />} />
+          </Switch>
           
         
       </div>
