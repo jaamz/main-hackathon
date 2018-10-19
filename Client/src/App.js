@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import JobPage from './Components/JobPage';
-import Collaboration from './Components/Collaboration';
+import JobPage from './Components/Job/JobPage';
+import Collaboration from './Components/Collaboration/Collaboration';
+import JobThreads from './Components/Job/JobThreads'
 import FormSubmit from './Components/FormSubmit';
 // import InterviewPage from './Components/InterviewPage';
 // import Mainpage from './Components/Mainpage'
@@ -35,8 +36,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-
-        <Collaboration />
+        <JobThreads />
+        
+        {/* <Collaboration /> */}
         {/* <JobPage
           addToThread ={this.addToThread}
           thread= {this.state.thread} /> */}

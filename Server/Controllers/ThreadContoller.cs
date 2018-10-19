@@ -7,26 +7,26 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Server
 {
-    [Route("api/users")]
+    [Route("api/threads")]
     [ApiController]
-    public class AppUserController : Controller
+    public class ThreadController : Controller
     {
 
         private HackathonDBContext _context;
 
-        public AppUserController(HackathonDBContext context)
+        public ThreadController(HackathonDBContext context)
         {
             _context = context;
         }
 
 
         [HttpGet]
-        public List<AppUser> Get()
+        public List<Thread> Get()
         {
-            return _context.appuser.Include(c => c.company).ToList();
+            return _context.thread.Include(t => t.channel).ToList();
         }
 
-        [HttpGet("{id}", Name = "GetUser")]
+        [HttpGet("{id}", Name = "GetThread")]
         public async Task<IActionResult> Get(int? id)
         {
             if (id == null)
@@ -34,52 +34,52 @@ namespace Server
                 return NotFound();
             }
 
-            AppUser user = await _context.appuser
-                                        .Include(c => c.company)
-                                        .SingleOrDefaultAsync(c => c.appuser_id == id);
+            Thread thread = await _context.thread
+                                        .Include(t => t.channel_id)
+                                        .SingleOrDefaultAsync(t => t.channel_id == id);
 
-            if (user == null)
+            if (thread == null)
             {
                 return NotFound();
             }
 
-            return Ok(user);
+            return Ok(thread);
 
         }
 
              [HttpPost]
-        public async Task<IActionResult> Post([FromBody] AppUser user)
+        public async Task<IActionResult> Post([FromBody] Thread thread)
         {
-            if (user == null)
+            if (thread == null)
             {
                 return BadRequest();
             }
 
-            _context.appuser.Add(user);
+            _context.thread.Add(thread);
             _context.SaveChanges();
 
             // Grab the newly created job such that can return below in "CreatedAtRoute"
-            AppUser newUser = await _context.appuser
-                                .Include(c => c.company)
-                                .SingleOrDefaultAsync(c => c.appuser_id == user.appuser_id);
+            Thread newThread = await _context.thread
+                                .Include(c => c.channel)
+                                .SingleOrDefaultAsync(t => t.thread_id == thread.thread_id);
             
-            if (newUser == null)
+            if (newThread == null)
             {
                 return BadRequest();
             }
 
-            return CreatedAtRoute("Getjob", new {id = user.appuser_id }, newUser);
+            return CreatedAtRoute("GetThread", new {id = thread.thread_id }, newThread);
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] AppUser user)
+        public IActionResult Put(int id, [FromBody] Thread thread)
         {
-            if (user == null || user.appuser_id != id)
+            if (thread == null || thread.thread_id != id)
             {
                 return BadRequest();
             }
 
-            _context.appuser.Update(user);
+            _context.thread.Update(thread);
             _context.SaveChanges();
             return NoContent();
         }
@@ -87,14 +87,14 @@ namespace Server
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            AppUser item = _context.appuser.Find(id);
+            Thread item = _context.thread.Find(id);
 
             if (item == null)
             {
                 return NotFound();
             }
 
-            _context.appuser.Remove(item);
+            _context.thread.Remove(item);
             _context.SaveChanges();
             return Ok(item);
         }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import FormSubmit from './FormSubmit';
+import FormSubmit from '../FormSubmit';
 
 class JobPage extends Component {
 

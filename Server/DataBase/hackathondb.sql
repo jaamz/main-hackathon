@@ -7,11 +7,11 @@ CREATE TABLE Company (
     company_name    varchar(50),
     company_phone   varchar(50),
     company_address varchar(50),
-    company_notes   varchar(1000)
+    company_notes   varchar(100)
 );
 
 CREATE TABLE AppUser (
-    user_id         SERIAL PRIMARY KEY,
+    appuser_id      SERIAL PRIMARY KEY,
     name            varchar(50),
     email           varchar(50),
     phone           varchar(50),
@@ -21,10 +21,31 @@ CREATE TABLE AppUser (
 );
 
 CREATE TABLE Jobs (
-    jobs_id          SERIAL PRIMARY KEY,
+    jobs_id         SERIAL PRIMARY KEY,
     position_title  varchar(50),
     employment_type varchar(50),
     company_id      int REFERENCES Company (company_id)
+);
+
+CREATE TABLE Channel (
+    channel_id      SERIAL PRIMARY KEY,
+    name            varchar(50)
+);
+
+CREATE TABLE Thread (
+    thread_id       SERIAL PRIMARY KEY,
+    thread_title    varchar(50),
+    channel_id      int REFERENCES Channel (channel_id),
+    appuser_id      int REFERENCES AppUser(appuser_id)
+);
+
+CREATE TABLE PostedMessage(
+    message_id      SERIAL PRIMARY KEY,
+    appuser_id      int REFERENCES AppUser (appuser_id),
+    thread_id       int REFERENCES Thread (thread_id),
+    message_title   varchar(50),
+    message_content varchar(500),
+    message_time    varchar(50)
 );
 
 INSERT INTO AppUser(name, email, phone, bio, user_type)
@@ -45,6 +66,25 @@ VALUES
 ('.Net Developer', 'Contract', 2),
 ('Full-Stack Developer', 'Full Time', 1),
 ('React-Native Developer', 'Full Time', 1);
+
+INSERT INTO Thread (thread_title, channel_id, appuser_id)
+VALUES
+('Help Needed', 1, 2),
+('New Listing', 2, 3),
+('Interviews', 3, 1);
+
+INSERT INTO Channel (name)
+VALUES
+('Collab'),
+('Jobs'),
+('Interviews');
+
+
+INSERT INTO PostedMessage (appuser_id, message_title, message_content, message_time)
+VALUES
+(1, 'Untitled', 'Help Please', '10/18/18'),
+(2, 'Full Time', 'Pending', '10/12/18'),
+(3, 'Ready', 'Full Time', '10/19/19');
 -- CREATE TABLE Interview(
 
 -- );

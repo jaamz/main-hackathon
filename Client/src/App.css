@@ -25,3 +25,9 @@
   margin: 0 auto;
   width: 300px;
 }
+.thread-container {
+  text-align: left;
+}
+.thread-posting {
+  padding: 25px;
+}

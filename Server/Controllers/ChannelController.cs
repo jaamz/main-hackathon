@@ -7,14 +7,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Server
 {
-    [Route("api/companies")]
+    [Route("api/channels")]
     [ApiController]
-    public class CompanyController : Controller
+    public class ChannelController : Controller
     {
 
         private HackathonDBContext _context;
 
-        public CompanyController(HackathonDBContext context)
+        public ChannelController(HackathonDBContext context)
         {
             _context = context;
         }
@@ -22,66 +22,65 @@ namespace Server
         [HttpGet]
         public IActionResult Get()
         {
-            if (_context.company.ToList().Count == 0)
+            if (_context.channel.ToList().Count == 0)
             {
                 return NotFound();
             }
 
-            return Ok(_context.company.ToList());
+            return Ok(_context.channel.ToList());
         }
-
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            Company c = _context.company.Find(id);
+            Channel chan = _context.channel.Find(id);
 
-            if ( c == null ) {
+            if ( chan == null ) {
                 return BadRequest();
             }
-            return Ok(c);
+            return Ok(chan);
 
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody]Company company)
+        public IActionResult Create([FromBody]Channel channel)
         {
-            if (company == null) 
+            if (channel == null) 
             {
                 return BadRequest();
             }
-            _context.company.Add(company);
+            _context.channel.Add(channel);
             _context.SaveChanges();
-            return Ok(company);
+            return Ok(channel);
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateById(int id, [FromBody]Company company)
+        public IActionResult UpdateById(int id, [FromBody]Channel channel)
         {
-            Company item = _context.company.Find(id);
+            Channel item = _context.channel.Find(id);
             
-            if (company == null)
+            if (channel == null)
             {
                 return NotFound();
             }
 
-            _context.company.Remove(item);
-            _context.company.Add(company);
+            _context.channel.Remove(item);
+            _context.channel.Add(channel);
             _context.SaveChanges();
 
-            return Ok(company);
+            return Ok(channel);
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            Company item = _context.company.Find(id);
+            Channel item = _context.channel.Find(id);
             
             if (item == null)
             {
                 return NotFound();
             }
 
-            _context.company.Remove(item);
+            _context.channel.Remove(item);
             _context.SaveChanges();
             return Ok(item);
         }
