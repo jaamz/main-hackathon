@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import JobPage from './Components/JobPage';
 import FormSubmit from './Components/FormSubmit';
+import InterviewPage from './Components/InterviewPage';
 import './App.css';
 
 class App extends Component {
@@ -22,9 +23,10 @@ class App extends Component {
       <div className="App">
         
           
-          <JobPage
+          {/* <JobPage
           addToThread ={this.addToThread}
-          thread= {this.state.thread} />
+          thread= {this.state.thread} /> */}
+          <InterviewPage />
           
         
       </div>
