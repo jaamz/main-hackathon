@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -31,6 +32,20 @@ namespace Server
             var connectionString = Configuration.GetConnectionString("HackathonDBContext");   // ADDED FOR DB
             services.AddEntityFrameworkNpgsql().AddDbContext<HackathonDBContext>(options => options.UseNpgsql(connectionString)); //ADD FOR DB
             services.AddCors();
+
+                    services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                    .AddJwtBearer(options => 
+                    {
+                        options.TokenValidationParameters = new TokenValidationParameters 
+                        {
+                            ValidateIssuer = false,
+                            ValidateLifetime = true,
+                            ValidateAudience = false,
+                            ValidateIssuerSigningKey = true,
+                            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretsuperSecretsuperSecret"))
+                        };
+
+                    });
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

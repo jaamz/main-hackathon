@@ -67,11 +67,6 @@ VALUES
 ('Full-Stack Developer', 'Full Time', 1),
 ('React-Native Developer', 'Full Time', 1);
 
-INSERT INTO Thread (thread_title, channel_id, appuser_id)
-VALUES
-('Help Needed', 1, 2),
-('New Listing', 2, 3),
-('Interviews', 3, 1);
 
 INSERT INTO Channel (name)
 VALUES
@@ -85,6 +80,12 @@ VALUES
 (1, 'Untitled', 'Help Please', '10/18/18'),
 (2, 'Full Time', 'Pending', '10/12/18'),
 (3, 'Ready', 'Full Time', '10/19/19');
+
+INSERT INTO Thread (thread_title, channel_id, appuser_id)
+VALUES
+('Help Needed', 1, 2),
+('New Listing', 2, 3),
+('Interviews', 3, 1);
 -- CREATE TABLE Interview(
 
 -- );
