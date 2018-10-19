@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Claims;
 using System.Text;
 
@@ -21,6 +22,16 @@ namespace Server
             _context = context;
         }
 
+        [HttpGet]
+        public IActionResult Get()
+        {
+            if (_context.appuser.ToList().Count == 0)
+            {
+                return NotFound();
+            }
+
+            return Ok(_context.appuser.ToList());
+        }
         [HttpPost]
         public ActionResult<AppUser> Register([FromBody] AppUser user)
         {

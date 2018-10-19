@@ -17,7 +17,7 @@ CREATE TABLE Jobs (
     jobs_id         SERIAL PRIMARY KEY,
     position_title  varchar(50),
     employment_type varchar(50),
-    company_name    varchar(50),
+    company_name    varchar(50)
 );
 
 
@@ -44,11 +44,11 @@ VALUES
 ('Pat Truong', 'ptruong', 'password4', 'pat@rca.com', '714-394-4838', 'ZenMaster', 'Instructor');
 
 
-INSERT INTO Jobs (position_title, employment_type, company_id)
+INSERT INTO Jobs (position_title, employment_type)
 VALUES
-('.Net Developer', 'Contract', 2),
-('Full-Stack Developer', 'Full Time', 1),
-('React-Native Developer', 'Full Time', 1);
+('.Net Developer', 'Contract'),
+('Full-Stack Developer', 'Full Time'),
+('React-Native Developer', 'Full Time');
 
 
 INSERT INTO PostedMessage (appuser_id, message_title, message_content, message_time)
@@ -57,11 +57,11 @@ VALUES
 (2, 'Full Time', 'Pending', '10/12/18'),
 (3, 'Ready', 'Full Time', '10/19/19');
 
-INSERT INTO Thread (thread_title, channel_id, appuser_id)
+INSERT INTO Thread (thread_title, appuser_id)
 VALUES
-('Jobs', 1, 2),
-('Collaboration', 2, 3),
-('Interviews', 3, 1);
+('Jobs', 2),
+('Collaboration',3),
+('Interviews', 1);
 -- CREATE TABLE Interview(
 
--- );
+-- )
