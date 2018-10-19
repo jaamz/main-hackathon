@@ -51,7 +51,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-          <Mainpage />
+          <Switch>
+            <Route exact path = '/' render ={(renderProps) => <MainPage {...renderProps} />} />
+            <Route path = "/Jobs" render={(renderProps) => <JobPage {...renderProps} />} />
+            <Route path = "/Interview" render ={(renderProps) => <InterviewPage {...renderProps} />} />
+            <Route path = "/Collaboration" render={(renderProps) => <Collaboration {...renderProps} />} />
+          </Switch>
           
         
       </div>
