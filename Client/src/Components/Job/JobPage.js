@@ -10,7 +10,7 @@ class JobPage extends Component {
         body:''
     }
 
-    
+    // HTTP get to update state to map to jobs
     grabJobs = jobs => {
         axios.get(`http://localhost:5000/api/jobs`)
         .then(res => {
@@ -19,6 +19,17 @@ class JobPage extends Component {
                     jobs: res.data
                 })
             })
+    }
+
+    // function to pass down to formsubmit as a prop to post to backend and update state with callback function and
+    // update state to map out new posting
+    // (FUTURE GOAL: chronological order )
+    postJob = job => {
+        axios.post(`http://localhost:5000/api/jobs`, job)
+            .then(res => {
+
+            })
+            this.grabJobs();
     }
 
 

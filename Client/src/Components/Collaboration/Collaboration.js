@@ -38,9 +38,7 @@ class Collaboration extends Component {
                             {this.state.collaborations.map( c => {
                                 return(
                                     <div className="card job-card">
-                                        <h2>
-                                            {c.collaboration_title}
-                                        </h2>
+                                        <h2>{c.collaboration_title}</h2>
                                         <h3>{c.appuser.username}</h3>
                                         <h3>{c.collaboration_body}</h3>
                                     </div>
